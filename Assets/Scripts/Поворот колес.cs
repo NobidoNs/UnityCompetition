@@ -17,11 +17,11 @@ public class Поворотколес : MonoBehaviour
     {   
         Vector3 steeringRotation = SteeringWheel.transform.rotation.eulerAngles;
         Vector3 leftWheelRotation = LeftWheel.transform.rotation.eulerAngles;
-        leftWheelRotation.y = steeringRotation.y / 2.5f;
+        leftWheelRotation.y = steeringRotation.x / 2.5f;
         LeftWheel.transform.rotation = Quaternion.Euler(leftWheelRotation);
 
         Vector3 rightWheelRotation = RightWheel.transform.rotation.eulerAngles;
-        rightWheelRotation.y = steeringRotation.y / 2.5f;
+        rightWheelRotation.y = steeringRotation.x / 2.5f;
         RightWheel.transform.rotation = Quaternion.Euler(rightWheelRotation);
     }
 }
