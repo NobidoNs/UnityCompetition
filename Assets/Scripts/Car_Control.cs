@@ -5,40 +5,26 @@ public class Car_Control : MonoBehaviour
 {
 
     private MechanicalSystem link1;
-    [Header("Колёса (Wheel Colliders)")]
     public WheelCollider frontLeftWheel;
     public WheelCollider frontRightWheel;
     public WheelCollider rearLeftWheel;
     public WheelCollider rearRightWheel;
-
-    [Header("Модели колёс (Wheel Mesh)")]
     public Transform frontLeftMesh;
     public Transform frontRightMesh;
     public Transform rearLeftMesh;
     public Transform rearRightMesh;
-
-    [Header("Параметры автомобиля")]
     public float maxMotorTorque = 1500f;
     public float maxSteeringAngle = 30f;
     public float brakeForce = 3000f;
-
-    [Header("Руль")]
     public Transform steeringWheel;
-
-    [Header("Коробка передач")]
     public int current;
 
-    private void Start()
-    {
-        
-        
-    }    public float[] gearRatios = { -2.5f, 0f, 1.5f, 2.0f, 2.5f, 3.0f, 3.5f };
+
+    public float[] gearRatios = { -2.5f, 0f, 1.5f, 2.0f, 2.5f, 3.0f, 3.5f };
 
     private float throttleInput;
     private float steeringInput;
     private bool isBraking;
-
-    [Header("Состояние")]
     public bool isPlayerInCar = false;
 
     private void Update()
