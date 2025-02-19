@@ -1489,15 +1489,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6864d33a9114506b972badf9407c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  current: 2
   Richag: {fileID: 303943564}
-  line1: {fileID: 1715798887}
-  line2: {fileID: 1943223051}
-  line3: {fileID: 825678813}
-  line4: {fileID: 545952975}
-  line5: {fileID: 1626254755}
-  line6: {fileID: 350931377}
-  line7: {fileID: 950997344}
+  lines:
+  - {fileID: 1715798887}
+  - {fileID: 1943223051}
+  - {fileID: 825678813}
+  - {fileID: 545952975}
+  - {fileID: 1626254755}
+  - {fileID: 350931377}
+  - {fileID: 950997344}
+  current: 2
 --- !u!114 &1384439451
 MonoBehaviour:
   m_ObjectHideFlags: 0
