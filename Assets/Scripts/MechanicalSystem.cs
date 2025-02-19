@@ -7,7 +7,7 @@ public class MechanicalSystem : MonoBehaviour
 {
 
     private ScriptableObject pe;
-    public int current = 2;
+    public int current = -1;
     public Object Richag; 
     public Object line1;
     public Object line2;

@@ -30,8 +30,8 @@ public class Car_Control : MonoBehaviour
 
     private void Start()
     {
-        link1 = GetComponent<MechanicalSystem>();
-        current = link1.current;
+        
+        
     }    public float[] gearRatios = { -2.5f, 0f, 1.5f, 2.0f, 2.5f, 3.0f, 3.5f };
 
     private float throttleInput;
@@ -43,6 +43,8 @@ public class Car_Control : MonoBehaviour
 
     private void Update()
     {
+        link1 = GetComponent<MechanicalSystem>();
+        current = link1.current;
         if (isPlayerInCar)
         {
             HandleInput();
