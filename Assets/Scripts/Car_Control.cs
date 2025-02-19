@@ -58,8 +58,6 @@ public class Car_Control : MonoBehaviour
             ApplyBrakes();
         }
     }
-
-    // Обрабатываем ввод игрока
     void HandleInput()
     {
         throttleInput = Input.GetAxis("Vertical");
