@@ -8,10 +8,7 @@ public class MechanicalSystem : MonoBehaviour
 
     void Update()
     {
-
         GameObject nearestLine = FindNearestLine();
-
-
         if (nearestLine != null)
         {
             Richag.transform.position = new Vector3(
@@ -38,7 +35,6 @@ public class MechanicalSystem : MonoBehaviour
                 nearestLine = line;
             }
         }
-
         return nearestLine;
     }
 }

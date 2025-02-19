@@ -1,46 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
-public class Поворотколес : MonoBehaviour
+public class WheelSteering : MonoBehaviour
 {
-    int count = 0;
-    public GameObject LeftWheel;
-    public GameObject RightWheel;
-    public GameObject SteeringWheel;
-    void Start()
+    public GameObject LeftWheel, RightWheel, SteeringWheel;
+
+    private float totalSteeringAngle = 0f;
+    private float lastSteeringRotation = 0f;
+
+    void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()   
-    {   
-        float steeringRotation = SteeringWheel.transform.rotation.eulerAngles.z;
-        if(steeringRotation > 180 && count != 2)
-        {
-            steeringRotation -= 360;
-            count += 1;
-        }
-        
-        else if(steeringRotation > 180)
-        {  
-            SteeringWheel.transform.rotation = Quaternion.Euler(90, 0, 180);
-        }
-        
-        LeftWheel.transform.rotation = Quaternion.Euler(LeftWheel.transform.rotation.eulerAngles.x, LeftWheel.transform.rotation.eulerAngles.y, steeringRotation);
-        RightWheel.transform.rotation = Quaternion.Euler(RightWheel.transform.rotation.eulerAngles.x, RightWheel.transform.rotation.eulerAngles.y, steeringRotation);
-        
-
-        /*Vector3 steeringRotation = SteeringWheel.transform.rotation.eulerAngles;
-        Vector3 leftWheelRotation = LeftWheel.transform.rotation.eulerAngles;
-        leftWheelRotation.y = steeringRotation.x / 24f;
-        LeftWheel.transform.rotation = Quaternion.Euler(leftWheelRotation);
-
-        Vector3 rightWheelRotation = RightWheel.transform.rotation.eulerAngles;
-        rightWheelRotation.y = steeringRotation.x / 24f;
-        RightWheel.transform.rotation = Quaternion.Euler(rightWheelRotation);
-        */
+        float currentRotation = SteeringWheel.transform.localEulerAngles.z;
+        if (currentRotation > 180) currentRotation -= 360;
+        float deltaRotation = currentRotation - lastSteeringRotation;
+        if (deltaRotation > 180) deltaRotation -= 360;
+        if (deltaRotation < -180) deltaRotation += 360;
+        totalSteeringAngle += deltaRotation;
+        totalSteeringAngle = Mathf.Clamp(totalSteeringAngle, -540f, 540f);
+        float wheelRotation = (totalSteeringAngle / 540f) * 45f;
+        LeftWheel.transform.localRotation = Quaternion.Euler(-90, wheelRotation, 0);
+        RightWheel.transform.localRotation = Quaternion.Euler(-90, wheelRotation, 0);
+        lastSteeringRotation = currentRotation;
     }
 }
