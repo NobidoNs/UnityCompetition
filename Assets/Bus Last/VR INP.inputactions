@@ -1,0 +1,96 @@
+{
+    "name": "VR INP",
+    "maps": [
+        {
+            "name": "Car Control",
+            "id": "c876d3c1-2d4f-486e-9233-6057d062f86b",
+            "actions": [
+                {
+                    "name": "VR_BRAKE",
+                    "type": "Button",
+                    "id": "f6f118f7-cf74-4d28-a0b2-71b04a501723",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "VR_THROTTLE",
+                    "type": "Button",
+                    "id": "3a73a897-963f-43ec-825a-011dcca341e9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "19ddc25b-33e7-46d1-93f0-1ff587298cfc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "18a80798-df26-459e-b920-97bc5edb65ef",
+                    "path": "<XRController>{RightHand}/{PointerActivated}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VR_BRAKE",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b1810da7-ae36-4173-ae2d-f4d26d3a437a",
+                    "path": "<Keyboard>/period",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VR_BRAKE",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b89206f-5939-4c20-aad7-d990d075cf0b",
+                    "path": "<XRController>{LeftHand}/{PointerActivated}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VR_THROTTLE",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da3035bf-927c-48af-a373-da03f825f125",
+                    "path": "<Keyboard>/comma",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VR_THROTTLE",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d4115e3-41c0-4bdd-8fc7-8c65c316e750",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
