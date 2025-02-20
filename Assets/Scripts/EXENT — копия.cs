@@ -13,6 +13,8 @@ public class CarEnterExitVR : MonoBehaviour
 
     public GameObject exPoint;
 
+    public GameObject Locmotion_;
+
     void Start()
     {
         carController = car.GetComponent<Car_Control2>();
@@ -24,7 +26,7 @@ public class CarEnterExitVR : MonoBehaviour
         {
             playerRig.transform.position = driverSeat.position;
             playerRig.transform.rotation = driverSeat.rotation;
-            playerRig.GetComponent<CharacterController>().enabled = false;
+            playerRig.GetComponent<LocomotionSystem>().enabled = false;
             isInCar = true;
             carController.isPlayerInCar = true;
             
