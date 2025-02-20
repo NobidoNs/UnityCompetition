@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class WheelSteering : MonoBehaviour
 {
-    public GameObject LeftWheel, RightWheel, SteeringWheel;
+    public Collider LeftWheel, RightWheel;
+    public GameObject SteeringWheel;
 
     private float totalSteeringAngle = 0f;
     private float lastSteeringRotation = 0f;

@@ -4,7 +4,7 @@ public class MechanicalSystem : MonoBehaviour
 {
     public GameObject Richag;
     public GameObject[] lines;
-    public int current = 0;
+    public int current11 = 3;
 
     void Update()
     {
@@ -16,7 +16,7 @@ public class MechanicalSystem : MonoBehaviour
                 Richag.transform.position.y,
                 Richag.transform.position.z
             );
-            current = System.Array.IndexOf(lines, nearestLine) + 1;
+            current11 = System.Array.IndexOf(lines, nearestLine) + 1;
         }
     }
 
