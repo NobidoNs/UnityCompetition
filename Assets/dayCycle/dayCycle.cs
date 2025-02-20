@@ -21,7 +21,7 @@ public class DayNightCycle : MonoBehaviour
         float cycleProgress = (timeElapsed % dayDuration) / dayDuration;
         
         // Вращение солнца и луны
-        float sunAngle = cycleProgress * 360f - 90f;
+        float sunAngle = cycleProgress * 360f;
         sun.transform.rotation = Quaternion.Euler(sunAngle, 170f, 0f);
         moon.transform.rotation = Quaternion.Euler(sunAngle + 180f, 170f, 0f);
         
