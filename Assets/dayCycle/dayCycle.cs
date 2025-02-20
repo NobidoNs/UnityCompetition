@@ -8,7 +8,7 @@ public class DayNightCycle : MonoBehaviour
     public Material skyboxNight;
     public GameObject sunObject;
     public GameObject moonObject;
-    public float dayDuration = 60f; // Длительность полного цикла дня (в секундах)
+    public float dayDuration = 10f; // Длительность полного цикла дня (в секундах)
     public Gradient lightColor;
     public AnimationCurve lightIntensity;
     
@@ -30,9 +30,9 @@ public class DayNightCycle : MonoBehaviour
         moonObject.transform.position = moon.transform.forward * 100f;
         
         // Изменение цвета и интенсивности
-        sun.color = lightColor.Evaluate(cycleProgress);
-        sun.intensity = lightIntensity.Evaluate(cycleProgress);
-        moon.intensity = lightIntensity.Evaluate(1 - cycleProgress);
+        //sun.color = lightColor.Evaluate(cycleProgress);
+        //sun.intensity = lightIntensity.Evaluate(cycleProgress);
+        //moon.intensity = lightIntensity.Evaluate(2f - cycleProgress);
         
         // Смена неба
         if (cycleProgress > 0.5f && isDay)
