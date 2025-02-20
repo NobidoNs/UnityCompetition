@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class WheelSteering : MonoBehaviour
 {
-    public Collider LeftWheel, RightWheel;
+    public GameObject LeftWheel;
+    public GameObject RightWheel;
     public GameObject SteeringWheel;
+    public WheelCollider frontLeftWheelCollider;
+    public WheelCollider frontRightWheelCollider;
 
     private float totalSteeringAngle = 0f;
     private float lastSteeringRotation = 0f;
+    public float maxSteeringAngle = 45f;
 
     void Update()
     {
@@ -17,9 +21,11 @@ public class WheelSteering : MonoBehaviour
         if (deltaRotation < -180) deltaRotation += 360;
         totalSteeringAngle += deltaRotation;
         totalSteeringAngle = Mathf.Clamp(totalSteeringAngle, -540f, 540f);
-        float wheelRotation = (totalSteeringAngle / 540f) * 45f;
+        float wheelRotation = (totalSteeringAngle / 540f) * maxSteeringAngle;
         LeftWheel.transform.localRotation = Quaternion.Euler(-90, wheelRotation, 0);
         RightWheel.transform.localRotation = Quaternion.Euler(-90, wheelRotation, 0);
+        frontLeftWheelCollider.steerAngle = wheelRotation;
+        frontRightWheelCollider.steerAngle = wheelRotation;
         lastSteeringRotation = currentRotation;
     }
 }

@@ -9,13 +9,13 @@ public class CarEnterExitVR : MonoBehaviour
     public GameObject playerModel;
     
     private bool isInCar = false;
-    private CarControl carController;
+    private Car_Control2 carController;
 
     public GameObject exPoint;
 
     void Start()
     {
-        carController = car.GetComponent<CarControl>();
+        carController = car.GetComponent<Car_Control2>();
     }
 
     public void EnterCar()
