@@ -452,7 +452,7 @@ MonoBehaviour:
   skyboxNight: {fileID: 2100000, guid: 3f31ba04048847476bcc7caa5fc930d9, type: 2}
   sunObject: {fileID: 1886903894101114018}
   moonObject: {fileID: 4896556403830441435}
-  dayDuration: 60
+  dayDuration: 1
   lightColor:
     serializedVersion: 2
     key0: {r: 0, g: 0, b: 0, a: 1}

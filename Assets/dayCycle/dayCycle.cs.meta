@@ -3,7 +3,13 @@ guid: 6b6d2c3b261032341853a3ae26e96ad9
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - sun: {instanceID: 0}
+  - moon: {instanceID: 0}
+  - skyboxDay: {fileID: 2100000, guid: a1fc110d42129c4b283ca20344f37c89, type: 2}
+  - skyboxNight: {fileID: 2100000, guid: 3f31ba04048847476bcc7caa5fc930d9, type: 2}
+  - sunObject: {fileID: 8772459906726711268, guid: 46f6653bf52d1ebb3bb47071d2cb936c, type: 3}
+  - moonObject: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
