@@ -5,6 +5,8 @@ public class MechanicalSystem : MonoBehaviour
     public GameObject Richag; // Ручка коробки передач
     public GameObject[] lines; // Линии передач
     public int current = 0; // Текущая передача
+    public AudioSource audioSource;
+    public AudioClip[] radioStations;
 
     private bool isGrabbed = false; // Флаг, указывающий, что ручка захвачена
 
@@ -55,5 +57,9 @@ public class MechanicalSystem : MonoBehaviour
     public void SetGrabbed(bool grabbed)
     {
         isGrabbed = grabbed;
+        audioSource.Stop();
+        audioSource.clip = radioStations[0];
+        audioSource.Play();
+        Debug.Log(radioStations[0]);
     }
 }
