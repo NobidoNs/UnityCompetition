@@ -12,9 +12,9 @@ public class MechanicalSystem : MonoBehaviour
         if (nearestLine != null)
         {
             Richag.transform.position = new Vector3(
-                nearestLine.transform.position.x,
+                Richag.transform.position.x,
                 Richag.transform.position.y,
-                Richag.transform.position.z
+                nearestLine.transform.position.z
             );
             current11 = System.Array.IndexOf(lines, nearestLine) + 1;
         }

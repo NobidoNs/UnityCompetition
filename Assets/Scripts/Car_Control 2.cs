@@ -16,23 +16,23 @@ public class Car_Control2 : MonoBehaviour
     public Transform rearRightMesh;
 
     [Header("Параметры автомобиля")]
-    public float maxMotorTorque = 1500f; // Мощность двигателя
-    public float maxSteeringAngle = 30f; // Максимальный угол поворота
-    public float brakeForce = 3000f; // Сила торможения
+    public float maxMotorTorque = 1500f;
+    public float maxSteeringAngle = 30f;
+    public float brakeForce = 3000f;
 
-    private float throttleInput; // Газ
-    private float steeringInput; // Поворот
-    private bool isBraking; // Торможение
+    private float throttleInput;
+    private float steeringInput;
+    private bool isBraking;
 
     [Header("Состояние")]
-    public bool isPlayerInCar = false; // Флаг, находится ли игрок в машине
+    public bool isPlayerInCar = false;
 
-    public int current = 1; // Текущая передача
+    public int current = 1;
     public float[] gearRatios = { 0, -2.5f, 0f, 1.5f, 2.0f, 2.5f, 3.0f, 3.5f };
     private void Update()
     {
 
-        if (isPlayerInCar) // Управление работает только когда игрок в машине
+        if (isPlayerInCar)
         {
             HandleInput();
             UpdateWheelTransforms();
@@ -41,30 +41,24 @@ public class Car_Control2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        /*current = link1.current11;*/
         if (isPlayerInCar)
         {
             MoveVehicle();
             ApplyBrakes();
         }
     }
-
-    // Обрабатываем ввод игрока
     void HandleInput()
     {
-        throttleInput = Input.GetAxis("Vertical"); // Газ / тормоз
-        isBraking = Input.GetKey(KeyCode.Space); // Тормоз (пробел)
+        throttleInput = Input.GetAxis("Vertical");
+        isBraking = Input.GetKey(KeyCode.Space);
     }
-
-    // Движение автомобиля
     void MoveVehicle()
     {
         float motorTorque = throttleInput * maxMotorTorque;
+        motorTorque = -motorTorque;
         rearLeftWheel.motorTorque = motorTorque * gearRatios[current];
         rearRightWheel.motorTorque = motorTorque * gearRatios[current];
     }
-
-    // Торможение
     void ApplyBrakes()
     {
         float appliedBrake = isBraking ? brakeForce : 0f;
@@ -73,8 +67,6 @@ public class Car_Control2 : MonoBehaviour
         rearLeftWheel.brakeTorque = appliedBrake;
         rearRightWheel.brakeTorque = appliedBrake;
     }
-
-    // Обновление позиций и вращений моделей колёс
     void UpdateWheelTransforms()
     {
     UpdateWheel(frontLeftWheel, frontLeftMesh);
@@ -88,9 +80,7 @@ public class Car_Control2 : MonoBehaviour
     Vector3 position;
     Quaternion rotation;
     collider.GetWorldPose(out position, out rotation);
-    
-    // ⚠️ Исправляем поворот колеса, если модель повернута
     mesh.position = position;
-    mesh.rotation = rotation * Quaternion.Euler(0, 0, 90);  // Попробуй поменять угол (90, -90, 0)
+    mesh.rotation = rotation * Quaternion.Euler(0, 0, 90);
     }
 }
