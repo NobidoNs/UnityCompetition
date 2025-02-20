@@ -2,28 +2,49 @@ using UnityEngine;
 
 public class CarControl : MonoBehaviour
 {
+    // Ссылка на систему коробки передач
     private MechanicalSystem link1;
-    public WheelCollider frontLeftWheel, frontRightWheel, rearLeftWheel, rearRightWheel;
-    public Transform frontLeftMesh, frontRightMesh, rearLeftMesh, rearRightMesh;
-    public float maxMotorTorque = 1500f;
-    public float maxSteeringAngle = 30f;
-    public float brakeForce = 3000f;
-    public Transform steeringWheel;
-    public int current;
-    public float[] gearRatios = { -2.5f, 0f, 1.5f, 2.0f, 2.5f, 3.0f, 3.5f };
-    private float throttleInput, steeringInput;
-    private bool isBraking;
-    public bool isPlayerInCar = false;
+
+    // Коллайдеры колёс
+    public WheelCollider frontLeftWheel;
+    public WheelCollider frontRightWheel;
+    public WheelCollider rearLeftWheel;
+    public WheelCollider rearRightWheel;
+
+    // Модели колёс
+    public Transform frontLeftMesh;
+    public Transform frontRightMesh;
+    public Transform rearLeftMesh;
+    public Transform rearRightMesh;
+
+    // Параметры автомобиля
+    public float maxMotorTorque = 1500f; // Максимальный крутящий момент
+    public float brakeForce = 3000f; // Сила торможения
+    public bool isPlayerInCar = false; // Флаг, находится ли игрок в машине
+
+    // Коробка передач
+    public int current; // Текущая передача
+    public float[] gearRatios = { -2.5f, 0f, 1.5f, 2.0f, 2.5f, 3.0f, 3.5f }; // Передаточные числа
+
+    // Ввод игрока
+    private float throttleInput; // Газ/тормоз
+    private bool isBraking; // Торможение
 
     private void Start()
     {
+        // Получаем ссылку на систему коробки передач
         link1 = GetComponent<MechanicalSystem>();
-        UpdateWheelTransforms(); 
+
+        // Инициализация колёс
+        UpdateWheelTransforms();
     }
 
     private void Update()
     {
+        // Получаем текущую передачу из системы коробки передач
         current = link1.current;
+
+        // Обрабатываем ввод игрока, если игрок в машине
         if (isPlayerInCar)
         {
             HandleInput();
@@ -32,6 +53,7 @@ public class CarControl : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Управляем машиной, если игрок в машине
         if (isPlayerInCar)
         {
             MoveVehicle();
@@ -40,47 +62,46 @@ public class CarControl : MonoBehaviour
         }
     }
 
+    // Обработка ввода игрока
     void HandleInput()
     {
-        throttleInput = Input.GetAxis("Vertical");
-        steeringInput = GetSteeringInputFromWheel();
-        isBraking = Input.GetKey(KeyCode.Space);
+        throttleInput = Input.GetAxis("Vertical"); // Газ/тормоз (W/S или стрелки вверх/вниз)
+        isBraking = Input.GetKey(KeyCode.Space); // Тормоз (пробел)
     }
 
-    float GetSteeringInputFromWheel()
-    {
-        float wheelAngle = steeringWheel.localEulerAngles.z;
-        if (wheelAngle > 180) wheelAngle -= 360;
-        return Mathf.Clamp(wheelAngle / 1080f, -1f, 1f);
-    }
-
+    // Движение автомобиля
     void MoveVehicle()
     {
+        // Вычисляем крутящий момент на основе ввода и передаточного числа
         float motorTorque = throttleInput * maxMotorTorque;
-        if (current > 0 && current < gearRatios.Length) 
+
+        // Применяем передаточное число в зависимости от текущей передачи
+        if (current >= 0 && current < gearRatios.Length)
         {
             motorTorque *= gearRatios[current];
         }
-        if (current == 0) 
+
+        // Задняя передача
+        if (current == 0)
         {
             rearLeftWheel.motorTorque = -motorTorque;
             rearRightWheel.motorTorque = -motorTorque;
         }
-        else if (current == 1) 
+        // Нейтральная передача
+        else if (current == 1)
         {
             rearLeftWheel.motorTorque = 0;
             rearRightWheel.motorTorque = 0;
         }
-        else if (current >= 2) 
+        // Передние передачи
+        else if (current >= 2)
         {
             rearLeftWheel.motorTorque = motorTorque;
             rearRightWheel.motorTorque = motorTorque;
         }
-        float steerAngle = steeringInput * maxSteeringAngle;
-        frontLeftWheel.steerAngle = steerAngle;
-        frontRightWheel.steerAngle = steerAngle;
     }
 
+    // Применение тормозов
     void ApplyBrakes()
     {
         float appliedBrake = isBraking ? brakeForce : 0f;
@@ -90,6 +111,7 @@ public class CarControl : MonoBehaviour
         rearRightWheel.brakeTorque = appliedBrake;
     }
 
+    // Обновление позиций и вращений моделей колёс
     void UpdateWheelTransforms()
     {
         UpdateWheel(frontLeftWheel, frontLeftMesh);
@@ -98,10 +120,15 @@ public class CarControl : MonoBehaviour
         UpdateWheel(rearRightWheel, rearRightMesh);
     }
 
+    // Обновление позиции и вращения одного колеса
     void UpdateWheel(WheelCollider collider, Transform mesh)
     {
-        collider.GetWorldPose(out Vector3 position, out Quaternion rotation);
+        Vector3 position;
+        Quaternion rotation;
+        collider.GetWorldPose(out position, out rotation);
+
+        // Применяем позицию и вращение к модели колеса
         mesh.position = position;
-        mesh.rotation = rotation * Quaternion.Euler(0, 0, 90);
+        mesh.rotation = rotation * Quaternion.Euler(0, 0, 90); // Корректировка вращения
     }
 }
