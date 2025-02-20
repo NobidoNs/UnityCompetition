@@ -9,6 +9,7 @@ public class CarEnterExitVR : MonoBehaviour
     public GameObject playerModel;
 
     public AudioSource audioSource;
+    public AudioSource audioSource2;
     public AudioClip[] radioStations;
 
     private bool isInCar = false;
@@ -27,7 +28,7 @@ public class CarEnterExitVR : MonoBehaviour
         {
             playerRig.transform.position = driverSeat.position;
             playerRig.transform.rotation = driverSeat.rotation;
-            playerRig.GetComponent<LocomotionSystem>().enabled = false;
+            //playerRig.GetComponent<LocomotionSystem>().enabled = false;
             isInCar = true;
             carController.isPlayerInCar = true;
             
@@ -36,7 +37,8 @@ public class CarEnterExitVR : MonoBehaviour
             audioSource.Stop();
             audioSource.clip = radioStations[0];
             audioSource.Play();
-            Debug.Log(radioStations[0]);
+            audioSource2.clip = radioStations[2];
+            audioSource2.Play();
         }
     }
 
@@ -45,7 +47,7 @@ public class CarEnterExitVR : MonoBehaviour
         if (isInCar)
         {
             playerRig.transform.position = exPoint.transform.position;
-            playerRig.GetComponent<CharacterController>().enabled = true;
+            //playerRig.GetComponent<CharacterController>().enabled = true;
             isInCar = false;
             carController.isPlayerInCar = false;
             
@@ -53,6 +55,8 @@ public class CarEnterExitVR : MonoBehaviour
                 playerModel.SetActive(true);
             audioSource.Stop();
             audioSource.clip = radioStations[1];
+            audioSource.Play();
+            audioSource2.clip = radioStations[3];
             audioSource.Play();
         }
     }
