@@ -4,7 +4,19 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: "Assets/Scene_1_\u0417\u0434\u0430\u0447\u0430/Scene_2_Terrain.unity"
+    guid: 893e65c46675d75409169fdc2ed7c513
+  - enabled: 1
+    path: "Assets/Scene_1_\u0417\u0434\u0430\u0447\u0430/Scene_Avto_Pilot.unity"
+    guid: dfe1d457fff3f624cbfd82aeb33bb92f
+  - enabled: 1
+    path: "Assets/Scene_1_\u0417\u0434\u0430\u0447\u0430/Scene_Race.unity"
+    guid: 873e264c7269a84449a40d2b0c9ccda1
+  - enabled: 1
+    path: Assets/Scenes/Avto_Drom.unity
+    guid: 3b249ef4207bf4c4b88c9a95296dadf5
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ec64d5b8fe6634e77b40b31f348b31da, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 6db8bc182186f48c09ddfe1ab8f01f0e, type: 3}

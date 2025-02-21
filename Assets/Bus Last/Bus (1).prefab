@@ -1375,9 +1375,6 @@ GameObject:
   - component: {fileID: 2787260294866055047}
   - component: {fileID: 1683853200539677252}
   - component: {fileID: 6114737828955161123}
-  - component: {fileID: 1999616636479590866}
-  - component: {fileID: 238409139356070025}
-  - component: {fileID: 4996970379706845741}
   - component: {fileID: 2834971649054931434}
   m_Layer: 0
   m_Name: Bus (1)
@@ -1557,83 +1554,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.31, y: 0.01, z: 9.29}
   m_Center: {x: -0.04, y: -1.3, z: 0}
---- !u!114 &1999616636479590866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4811466056436611849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 956debc01eac5452798394cb5e587561, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  frontLeftWheel: {fileID: 8708829538581254741}
-  frontRightWheel: {fileID: 5471557157706508508}
-  rearLeftWheel: {fileID: 867729041766062614}
-  rearRightWheel: {fileID: 2008503202388808962}
-  frontLeftMesh: {fileID: 4563053276066809666}
-  frontRightMesh: {fileID: 8779043655968635679}
-  rearLeftMesh: {fileID: 7359650090533821755}
-  rearRightMesh: {fileID: 3287922932844051023}
-  maxMotorTorque: 1500
-  maxSteeringAngle: 30
-  brakeForce: 3000
-  accelerateAction: {fileID: -6123563169309656501, guid: 6db8bc182186f48c09ddfe1ab8f01f0e, type: 3}
-  brakeAction: {fileID: 3600815183317052759, guid: 6db8bc182186f48c09ddfe1ab8f01f0e, type: 3}
-  isPlayerInCar: 0
-  current: 0
-  gearRatios:
-  - 0
-  - -2.5
-  - 0
-  - 1.5
-  - 2
-  - 2.5
-  - 3
-  - 3.5
---- !u!114 &238409139356070025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4811466056436611849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88bcf5a43185f4853bab8191474abde6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  driverSeat: {fileID: 7710387608329484027}
-  car: {fileID: 4811466056436611849}
-  playerRig: {fileID: 0}
-  playerModel: {fileID: 0}
-  audioSource: {fileID: 0}
-  radioStations: []
-  exPoint: {fileID: 7089281910317037985}
---- !u!114 &4996970379706845741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4811466056436611849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baa9e68b629e2419ca83423ee9e68ad9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Richag: {fileID: 1652210630335363655}
-  lines:
-  - {fileID: 9069269198728198921}
-  - {fileID: 2264962346508104167}
-  - {fileID: 2470861996746897627}
-  - {fileID: 8455644386121457752}
-  - {fileID: 3635942492423096474}
-  - {fileID: 5863799878307313340}
-  - {fileID: 3295125002817846375}
-  current: 0
 --- !u!114 &2834971649054931434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1651,6 +1571,8 @@ MonoBehaviour:
   SteeringWheel: {fileID: 1914521640949511716}
   frontLeftWheelCollider: {fileID: 8708829538581254741}
   frontRightWheelCollider: {fileID: 5471557157706508508}
+  RulePoint: {fileID: 0}
+  car: {fileID: 0}
   maxSteeringAngle: 45
 --- !u!1 &5215015183865309076
 GameObject:
